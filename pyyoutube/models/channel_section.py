@@ -1,15 +1,15 @@
 """
-    Those are models related to channel sections.
+Those are models related to channel sections.
 """
 
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from pydantic import Field as field
 
 from .base import BaseModel
 from .common import BaseResource, BaseApiResponse
 
 
-@dataclass
 class ChannelSectionSnippet(BaseModel):
     """
     A class representing the channel section snippet info.
@@ -23,7 +23,6 @@ class ChannelSectionSnippet(BaseModel):
     position: Optional[int] = field(default=None)
 
 
-@dataclass
 class ChannelSectionContentDetails(BaseModel):
     """
     A class representing the channel section content details info.
@@ -35,7 +34,6 @@ class ChannelSectionContentDetails(BaseModel):
     channels: Optional[List[str]] = field(default=None)
 
 
-@dataclass
 class ChannelSection(BaseResource):
     """
     A class representing the channel section info.
@@ -49,7 +47,6 @@ class ChannelSection(BaseResource):
     )
 
 
-@dataclass
 class ChannelSectionResponse(BaseApiResponse):
     """
     A class representing the channel section's retrieve response info.
@@ -60,5 +57,4 @@ class ChannelSectionResponse(BaseApiResponse):
     items: Optional[List[ChannelSection]] = field(default=None, repr=False)
 
 
-@dataclass
 class ChannelSectionListResponse(ChannelSectionResponse): ...

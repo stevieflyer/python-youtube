@@ -1,16 +1,16 @@
 """
-    These are playlist related models.
+These are playlist related models.
 """
 
-from dataclasses import dataclass, field
 from typing import Optional, List
+
+from pydantic import Field as field
 
 from .base import BaseModel
 from .common import BaseApiResponse, BaseResource, Localized, Player, Thumbnails
 from .mixins import DatetimeTimeMixin
 
 
-@dataclass
 class PlaylistContentDetails(BaseModel):
     """
     A class representing playlist's content details info.
@@ -21,7 +21,6 @@ class PlaylistContentDetails(BaseModel):
     itemCount: Optional[int] = field(default=None)
 
 
-@dataclass
 class PlaylistSnippet(BaseModel, DatetimeTimeMixin):
     """
     A class representing the playlist snippet info.
@@ -39,7 +38,6 @@ class PlaylistSnippet(BaseModel, DatetimeTimeMixin):
     localized: Optional[Localized] = field(default=None, repr=False)
 
 
-@dataclass
 class PlaylistStatus(BaseModel):
     """
     A class representing the playlist status info.
@@ -50,7 +48,6 @@ class PlaylistStatus(BaseModel):
     privacyStatus: Optional[str] = field(default=None)
 
 
-@dataclass
 class Playlist(BaseResource):
     """
     A class representing the playlist info.
@@ -64,7 +61,6 @@ class Playlist(BaseResource):
     player: Optional[Player] = field(default=None, repr=False)
 
 
-@dataclass
 class PlaylistListResponse(BaseApiResponse):
     """
     A class representing the playlist's retrieve response info.

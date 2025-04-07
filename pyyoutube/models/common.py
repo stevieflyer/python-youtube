@@ -1,14 +1,14 @@
 """
-    These are common models for multi resource.
+These are common models for multi resource.
 """
 
-from dataclasses import dataclass, field
 from typing import Optional, List
+
+from pydantic import Field as field
 
 from .base import BaseModel
 
 
-@dataclass
 class Thumbnail(BaseModel):
     """
     A class representing the thumbnail resource info.
@@ -21,7 +21,6 @@ class Thumbnail(BaseModel):
     height: Optional[int] = field(default=None, repr=False)
 
 
-@dataclass
 class Thumbnails(BaseModel):
     """
     A class representing the multi thumbnail resource info.
@@ -36,7 +35,6 @@ class Thumbnails(BaseModel):
     maxres: Optional[Thumbnail] = field(default=None, repr=False)
 
 
-@dataclass
 class Topic(BaseModel):
     """
     A class representing the channel topic info. this model also suitable for video.
@@ -52,7 +50,6 @@ class Topic(BaseModel):
     description: Optional[str] = field(default=None)
 
 
-@dataclass
 class BaseTopicDetails(BaseModel):
     """
     This is the base model for channel or video topic details.
@@ -77,7 +74,6 @@ class BaseTopicDetails(BaseModel):
         return r
 
 
-@dataclass
 class Localized(BaseModel):
     """
     A class representing the channel or video snippet localized info.
@@ -91,7 +87,6 @@ class Localized(BaseModel):
     description: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class PageInfo(BaseModel):
     """
     This is data model for save paging data.
@@ -105,7 +100,6 @@ class PageInfo(BaseModel):
     resultsPerPage: Optional[int] = field(default=None)
 
 
-@dataclass
 class BaseApiResponse(BaseModel):
     """
     This is Data Api response structure when retrieve data.
@@ -123,7 +117,6 @@ class BaseApiResponse(BaseModel):
     pageInfo: Optional[PageInfo] = field(default=None, repr=False)
 
 
-@dataclass
 class BaseResource(BaseModel):
     """
     This is a base model for different resource type.
@@ -136,7 +129,6 @@ class BaseResource(BaseModel):
     id: Optional[str] = field(default=None)
 
 
-@dataclass
 class ResourceId(BaseModel):
     """
     A class representing the subscription snippet resource info.
@@ -152,7 +144,6 @@ class ResourceId(BaseModel):
     playlistId: Optional[str] = field(default=None)
 
 
-@dataclass
 class Player(BaseModel):
     """
     A class representing the video,playlist player info.

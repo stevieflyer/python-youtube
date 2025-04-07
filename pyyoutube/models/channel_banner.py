@@ -1,16 +1,16 @@
 """
-    There are channel banner related models
+There are channel banner related models
 
-    References: https://developers.google.com/youtube/v3/docs/channelBanners#properties
+References: https://developers.google.com/youtube/v3/docs/channelBanners#properties
 """
 
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from pydantic import Field as field
 
 from .base import BaseModel
 
 
-@dataclass
 class ChannelBanner(BaseModel):
     """
     A class representing the channel banner's info.

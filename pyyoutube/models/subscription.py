@@ -1,16 +1,16 @@
 """
-  These are subscription related models.
+These are subscription related models.
 """
 
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from pydantic import Field as field
 
 from .base import BaseModel
 from .common import BaseApiResponse, BaseResource, ResourceId, Thumbnails
 from .mixins import DatetimeTimeMixin
 
 
-@dataclass
 class SubscriptionSnippet(BaseModel, DatetimeTimeMixin):
     """
     A class representing the subscription snippet info.
@@ -27,7 +27,6 @@ class SubscriptionSnippet(BaseModel, DatetimeTimeMixin):
     thumbnails: Optional[Thumbnails] = field(default=None, repr=False)
 
 
-@dataclass
 class SubscriptionContentDetails(BaseModel):
     """
     A class representing the subscription contentDetails info.
@@ -40,7 +39,6 @@ class SubscriptionContentDetails(BaseModel):
     activityType: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class SubscriptionSubscriberSnippet(BaseModel):
     """
     A class representing the subscription subscriberSnippet info.
@@ -54,7 +52,6 @@ class SubscriptionSubscriberSnippet(BaseModel):
     thumbnails: Optional[Thumbnails] = field(default=None, repr=False)
 
 
-@dataclass
 class Subscription(BaseResource):
     """
     A class representing the subscription info.
@@ -71,7 +68,6 @@ class Subscription(BaseResource):
     )
 
 
-@dataclass
 class SubscriptionListResponse(BaseApiResponse):
     """
     A class representing the subscription's retrieve response info.

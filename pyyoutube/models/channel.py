@@ -1,11 +1,12 @@
 """
-    These are channel related models.
+These are channel related models.
 
-    References: https://developers.google.com/youtube/v3/docs/channels#properties
+References: https://developers.google.com/youtube/v3/docs/channels#properties
 """
 
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from pydantic import Field as field
 
 from .base import BaseModel
 from .common import (
@@ -18,7 +19,6 @@ from .common import (
 from .mixins import DatetimeTimeMixin
 
 
-@dataclass
 class RelatedPlaylists(BaseModel):
     """
     A class representing the channel's related playlists info
@@ -30,7 +30,6 @@ class RelatedPlaylists(BaseModel):
     uploads: Optional[str] = field(default=None)
 
 
-@dataclass
 class ChannelBrandingSettingChannel(BaseModel):
     """
     A class representing the channel branding setting's channel info.
@@ -50,7 +49,6 @@ class ChannelBrandingSettingChannel(BaseModel):
     country: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class ChannelBrandingSettingImage(BaseModel):
     """
     A class representing the channel branding setting's image info.
@@ -61,7 +59,6 @@ class ChannelBrandingSettingImage(BaseModel):
     bannerExternalUrl: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class ChannelSnippet(BaseModel, DatetimeTimeMixin):
     """
     A class representing the channel snippet info.
@@ -79,7 +76,6 @@ class ChannelSnippet(BaseModel, DatetimeTimeMixin):
     country: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class ChannelContentDetails(BaseModel):
     """
     A class representing the channel's content info.
@@ -90,7 +86,6 @@ class ChannelContentDetails(BaseModel):
     relatedPlaylists: Optional[RelatedPlaylists] = field(default=None)
 
 
-@dataclass
 class ChannelStatistics(BaseModel):
     """
     A class representing the Channel's statistics info.
@@ -104,7 +99,6 @@ class ChannelStatistics(BaseModel):
     videoCount: Optional[int] = field(default=None, repr=False)
 
 
-@dataclass
 class ChannelTopicDetails(BaseTopicDetails):
     """
     A class representing the channel's topic detail info.
@@ -119,7 +113,6 @@ class ChannelTopicDetails(BaseTopicDetails):
     topicCategories: Optional[List[str]] = field(default=None)
 
 
-@dataclass
 class ChannelStatus(BaseModel):
     """
     A class representing the channel's status info.
@@ -134,7 +127,6 @@ class ChannelStatus(BaseModel):
     selfDeclaredMadeForKids: Optional[bool] = field(default=None, repr=False)
 
 
-@dataclass
 class ChannelBrandingSetting(BaseModel):
     """
     A class representing the channel branding settings info.
@@ -146,7 +138,6 @@ class ChannelBrandingSetting(BaseModel):
     image: Optional[ChannelBrandingSettingImage] = field(default=None)
 
 
-@dataclass
 class ChannelAuditDetails(BaseModel):
     """A class representing the channel audit details info.
 
@@ -159,7 +150,6 @@ class ChannelAuditDetails(BaseModel):
     contentIdClaimsGoodStanding: Optional[bool] = field(default=None, repr=True)
 
 
-@dataclass
 class ChannelContentOwnerDetails(BaseModel):
     """A class representing the channel data relevant for YouTube Partners.
 
@@ -170,7 +160,6 @@ class ChannelContentOwnerDetails(BaseModel):
     timeLinked: Optional[str] = field(default=None)
 
 
-@dataclass
 class Channel(BaseResource):
     """
     A class representing the channel's info.
@@ -191,7 +180,6 @@ class Channel(BaseResource):
     localizations: Optional[dict] = field(default=None, repr=False)
 
 
-@dataclass
 class ChannelListResponse(BaseApiResponse):
     """
     A class representing the channel's retrieve response info.

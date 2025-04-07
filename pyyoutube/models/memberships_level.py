@@ -1,20 +1,19 @@
 """
-    These are membership level related models.
+These are membership level related models.
 """
 
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from pydantic import Field as field
 
 from .base import BaseModel
 from .common import BaseResource, BaseApiResponse
 
 
-@dataclass
 class MembershipLevelSnippetLevelDetails(BaseModel):
     displayName: Optional[str] = field(default=None)
 
 
-@dataclass
 class MembershipsLevelSnippet(BaseModel):
     """
     A class representing the membership level snippet.
@@ -28,7 +27,6 @@ class MembershipsLevelSnippet(BaseModel):
     )
 
 
-@dataclass
 class MembershipsLevel(BaseResource):
     """
     A class representing the membership level.
@@ -39,7 +37,6 @@ class MembershipsLevel(BaseResource):
     snippet: Optional[MembershipsLevelSnippet] = field(default=None, repr=False)
 
 
-@dataclass
 class MembershipsLevelListResponse(BaseApiResponse):
     """
     A class representing the memberships level's retrieve response info.

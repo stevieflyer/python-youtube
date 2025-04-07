@@ -1,16 +1,16 @@
 """
-    These are member related models.
+These are member related models.
 """
 
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from pydantic import Field as field
 
 from .base import BaseModel
 from .common import BaseApiResponse
 from .mixins import DatetimeTimeMixin
 
 
-@dataclass
 class MemberSnippetMemberDetails(BaseModel):
     """
     A class representing the member snippet member detail.
@@ -24,20 +24,17 @@ class MemberSnippetMemberDetails(BaseModel):
     profileImageUrl: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class MemberSnippetMembershipsDuration(BaseModel, DatetimeTimeMixin):
     memberSince: Optional[str] = field(default=None)
     memberTotalDurationMonths: Optional[int] = field(default=None, repr=False)
 
 
-@dataclass
 class MemberSnippetMembershipsDurationAtLevel(BaseModel):
     level: Optional[str] = field(default=None)
     memberSince: Optional[str] = field(default=None, repr=False)
     memberTotalDurationMonths: Optional[int] = field(default=None, repr=False)
 
 
-@dataclass
 class MemberSnippetMembershipsDetails(BaseModel):
     """
     A class representing the member snippet membership detail.
@@ -56,7 +53,6 @@ class MemberSnippetMembershipsDetails(BaseModel):
     ] = field(default=None, repr=False)
 
 
-@dataclass
 class MemberSnippet(BaseModel):
     """
     A class representing the member snippet info.
@@ -73,7 +69,6 @@ class MemberSnippet(BaseModel):
     )
 
 
-@dataclass
 class Member(BaseModel):
     """
     A class representing the member info.
@@ -86,7 +81,6 @@ class Member(BaseModel):
     snippet: Optional[MemberSnippet] = field(default=None, repr=False)
 
 
-@dataclass
 class MemberListResponse(BaseApiResponse):
     """
     A class representing the member's retrieve response info.

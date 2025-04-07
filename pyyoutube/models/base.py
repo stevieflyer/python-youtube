@@ -1,23 +1,19 @@
-from dataclasses import dataclass, asdict
-from typing import Type, TypeVar
+from typing import Any, ClassVar
 
-from dataclasses_json import DataClassJsonMixin
-from dataclasses_json.core import Json, _decode_dataclass
-
-A = TypeVar("A", bound="DataClassJsonMixin")
+from pydantic import BaseModel as PydanticBaseModel, ConfigDict
 
 
-@dataclass
-class BaseModel(DataClassJsonMixin):
-    """Base model class for instance use."""
+class BaseModel(PydanticBaseModel):
+
+    model_config = ConfigDict(extra="allow", populate_by_name=True)
+
+    _json: ClassVar[dict[str, Any]] = {}
 
     @classmethod
-    def from_dict(cls: Type[A], kvs: Json, *, infer_missing=False) -> A:
-        # save original data for lookup
-        cls._json = kvs
-        return _decode_dataclass(cls, kvs, infer_missing)
+    def from_dict(cls, kvs: dict[str, Any], *, infer_missing: bool = False):
+        instance = cls.model_validate(kvs, strict=False)
+        setattr(cls, "_json", kvs)
+        return instance
 
-    def to_dict_ignore_none(self):
-        return asdict(
-            obj=self, dict_factory=lambda x: {k: v for (k, v) in x if v is not None}
-        )
+    def to_dict_ignore_none(self) -> dict[str, Any]:
+        return {k: v for k, v in self.model_dump().items() if v is not None}

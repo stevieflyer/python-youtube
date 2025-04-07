@@ -1,16 +1,16 @@
 """
-    These are caption related models
+These are caption related models
 """
 
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from pydantic import Field as field
 
 from .base import BaseModel
 from .mixins import DatetimeTimeMixin
 from .common import BaseResource, BaseApiResponse
 
 
-@dataclass
 class CaptionSnippet(BaseModel, DatetimeTimeMixin):
     """
     A class representing the caption snippet resource info.
@@ -33,7 +33,6 @@ class CaptionSnippet(BaseModel, DatetimeTimeMixin):
     failureReason: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class Caption(BaseResource):
     """
     A class representing the caption resource info.
@@ -44,7 +43,6 @@ class Caption(BaseResource):
     snippet: Optional[CaptionSnippet] = field(default=None)
 
 
-@dataclass
 class CaptionListResponse(BaseApiResponse):
     """
     A class representing the activity response info.

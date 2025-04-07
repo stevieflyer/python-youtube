@@ -1,27 +1,25 @@
 """
-    These are watermark related models.
+These are watermark related models.
 """
 
-from dataclasses import dataclass, field
 from typing import Optional
+
+from pydantic import Field as field
 
 from .base import BaseModel
 
 
-@dataclass
 class WatermarkTiming(BaseModel):
     type: Optional[str] = field(default=None)
     offsetMs: Optional[int] = field(default=None, repr=False)
     durationMs: Optional[int] = field(default=None, repr=False)
 
 
-@dataclass
 class WatermarkPosition(BaseModel):
     type: Optional[str] = field(default=None)
     cornerPosition: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class Watermark(BaseModel):
     """
     A class representing the watermark info.

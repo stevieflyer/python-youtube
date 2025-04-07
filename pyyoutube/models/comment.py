@@ -1,16 +1,16 @@
 """
-    These are comment related models.
+These are comment related models.
 """
 
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from pydantic import Field as field
 
 from .base import BaseModel
 from .mixins import DatetimeTimeMixin
 from .common import BaseApiResponse, BaseResource
 
 
-@dataclass
 class CommentSnippetAuthorChannelId(BaseModel):
     """
     A class representing comment's snippet authorChannelId info.
@@ -21,7 +21,6 @@ class CommentSnippetAuthorChannelId(BaseModel):
     value: Optional[str] = field(default=None)
 
 
-@dataclass
 class CommentSnippet(BaseModel, DatetimeTimeMixin):
     """
     A class representing comment's snippet info.
@@ -49,7 +48,6 @@ class CommentSnippet(BaseModel, DatetimeTimeMixin):
     updatedAt: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class Comment(BaseResource):
     """
     A class representing comment info.
@@ -60,7 +58,6 @@ class Comment(BaseResource):
     snippet: Optional[CommentSnippet] = field(default=None)
 
 
-@dataclass
 class CommentListResponse(BaseApiResponse):
     """
     A class representing the comment's retrieve response info.

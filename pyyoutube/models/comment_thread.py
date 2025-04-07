@@ -1,16 +1,16 @@
 """
-    These are comment threads related models.
+These are comment threads related models.
 """
 
-from dataclasses import dataclass, field
 from typing import Optional, List
+
+from pydantic import Field as field
 
 from .base import BaseModel
 from .common import BaseResource, BaseApiResponse
 from .comment import Comment
 
 
-@dataclass
 class CommentThreadSnippet(BaseModel):
     """A class representing comment tread snippet info.
 
@@ -25,7 +25,6 @@ class CommentThreadSnippet(BaseModel):
     isPublic: Optional[bool] = field(default=None, repr=False)
 
 
-@dataclass
 class CommentThreadReplies(BaseModel):
     """
     A class representing comment tread replies info.
@@ -36,7 +35,6 @@ class CommentThreadReplies(BaseModel):
     comments: Optional[List[Comment]] = field(default=None, repr=False)
 
 
-@dataclass
 class CommentThread(BaseResource):
     """
     A class representing comment thread info.
@@ -48,7 +46,6 @@ class CommentThread(BaseResource):
     replies: Optional[CommentThreadReplies] = field(default=None, repr=False)
 
 
-@dataclass
 class CommentThreadListResponse(BaseApiResponse):
     """
     A class representing the comment thread's retrieve response info.

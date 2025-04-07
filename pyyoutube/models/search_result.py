@@ -1,16 +1,16 @@
 """
-    These are search result related models.
+These are search result related models.
 """
 
-from dataclasses import dataclass, field
 from typing import Optional, List
+
+from pydantic import Field as field
 
 from .base import BaseModel
 from .common import BaseApiResponse, BaseResource, Thumbnails
 from .mixins import DatetimeTimeMixin
 
 
-@dataclass
 class SearchResultSnippet(BaseModel, DatetimeTimeMixin):
     """
     A class representing the search result snippet info.
@@ -27,7 +27,6 @@ class SearchResultSnippet(BaseModel, DatetimeTimeMixin):
     liveBroadcastContent: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class SearchResultId(BaseModel):
     """
     A class representing the search result id info.
@@ -41,7 +40,6 @@ class SearchResultId(BaseModel):
     playlistId: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class SearchResult(BaseResource):
     """
     A class representing the search result's info.
@@ -53,7 +51,6 @@ class SearchResult(BaseResource):
     snippet: Optional[SearchResultSnippet] = field(default=None, repr=False)
 
 
-@dataclass
 class SearchListResponse(BaseApiResponse):
     """
     A class representing the channel's retrieve response info.

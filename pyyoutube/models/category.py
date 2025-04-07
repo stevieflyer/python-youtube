@@ -1,16 +1,16 @@
 """
-    These are category related models.
-    Include VideoCategory
+These are category related models.
+Include VideoCategory
 """
 
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from pydantic import Field as field
 
 from .base import BaseModel
 from .common import BaseApiResponse, BaseResource
 
 
-@dataclass
 class CategorySnippet(BaseModel):
     """
     This is base category snippet for video and guide.
@@ -20,7 +20,6 @@ class CategorySnippet(BaseModel):
     title: Optional[str] = field(default=None)
 
 
-@dataclass
 class VideoCategorySnippet(CategorySnippet):
     """
     A class representing video category snippet info.
@@ -31,7 +30,6 @@ class VideoCategorySnippet(CategorySnippet):
     assignable: Optional[bool] = field(default=None, repr=False)
 
 
-@dataclass
 class VideoCategory(BaseResource):
     """
     A class representing video category info.
@@ -42,7 +40,6 @@ class VideoCategory(BaseResource):
     snippet: Optional[VideoCategorySnippet] = field(default=None, repr=False)
 
 
-@dataclass
 class VideoCategoryListResponse(BaseApiResponse):
     """
      A class representing the video category's retrieve response info.

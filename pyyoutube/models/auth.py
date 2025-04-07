@@ -1,10 +1,9 @@
-from dataclasses import dataclass, field
 from typing import List, Optional
 
 from .base import BaseModel
+from pydantic import Field as field
 
 
-@dataclass
 class AccessToken(BaseModel):
     """
     A class representing for access token.
@@ -19,7 +18,6 @@ class AccessToken(BaseModel):
     expires_at: Optional[float] = field(default=None, repr=False)
 
 
-@dataclass
 class UserProfile(BaseModel):
     """
     A class representing for user profile.

@@ -1,5 +1,5 @@
 """
-    Main Api implementation.
+Main Api implementation.
 """
 
 from typing import Optional, List, Union
@@ -195,7 +195,7 @@ class Api(object):
         redirect_uri: Optional[str] = None,
         scope: Optional[List[str]] = None,
         **kwargs,
-    ) -> (str, str):
+    ) -> tuple[str, str]:
         """
         Build authorization url to do authorize.
 

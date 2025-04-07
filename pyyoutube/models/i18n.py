@@ -1,15 +1,15 @@
 """
-    These are i18n language and region related models.
+These are i18n language and region related models.
 """
 
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from pydantic import Field as field
 
 from .base import BaseModel
 from .common import BaseResource, BaseApiResponse
 
 
-@dataclass
 class I18nRegionSnippet(BaseModel):
     """
     A class representing the I18n region snippet info.
@@ -21,7 +21,6 @@ class I18nRegionSnippet(BaseModel):
     name: Optional[str] = field(default=None)
 
 
-@dataclass
 class I18nRegion(BaseResource):
     """
     A class representing the I18n region info.
@@ -32,7 +31,6 @@ class I18nRegion(BaseResource):
     snippet: Optional[I18nRegionSnippet] = field(default=None)
 
 
-@dataclass
 class I18nRegionListResponse(BaseApiResponse):
     """
     A class representing the I18n region list response info.
@@ -43,7 +41,6 @@ class I18nRegionListResponse(BaseApiResponse):
     items: Optional[List[I18nRegion]] = field(default=None, repr=False)
 
 
-@dataclass
 class I18nLanguageSnippet(BaseModel):
     """
     A class representing the I18n language snippet info.
@@ -55,7 +52,6 @@ class I18nLanguageSnippet(BaseModel):
     name: Optional[str] = field(default=None)
 
 
-@dataclass
 class I18nLanguage(BaseResource):
     """
     A class representing the I18n language info.
@@ -66,7 +62,6 @@ class I18nLanguage(BaseResource):
     snippet: Optional[I18nLanguageSnippet] = field(default=None)
 
 
-@dataclass
 class I18nLanguageListResponse(BaseApiResponse):
     """
     A class representing the I18n language list response info.

@@ -1,12 +1,12 @@
 """
-    These are video related models.
+These are video related models.
 """
 
-from dataclasses import dataclass, field
 from typing import Optional, List
 
 import isodate
 from isodate import ISO8601Error
+from pydantic import Field as field
 
 from pyyoutube.error import ErrorCode, ErrorMessage, PyYouTubeException
 from .base import BaseModel
@@ -21,7 +21,6 @@ from .common import (
 from .mixins import DatetimeTimeMixin
 
 
-@dataclass
 class RegionRestriction(BaseModel):
     """
     A class representing the video content details region restriction info
@@ -109,7 +108,6 @@ class ContentRating(BaseModel):
     ytRating: Optional[str] = field(default=None)
 
 
-@dataclass
 class VideoContentDetails(BaseModel):
     """
     A class representing the video content details info.
@@ -140,7 +138,6 @@ class VideoContentDetails(BaseModel):
             return int(seconds)
 
 
-@dataclass
 class VideoTopicDetails(BaseTopicDetails):
     """
     A class representing video's topic detail info.
@@ -165,7 +162,6 @@ class VideoTopicDetails(BaseTopicDetails):
             self.topicIds = self.relevantTopicIds
 
 
-@dataclass
 class VideoSnippet(BaseModel, DatetimeTimeMixin):
     """
     A class representing the video snippet info.
@@ -187,7 +183,6 @@ class VideoSnippet(BaseModel, DatetimeTimeMixin):
     defaultAudioLanguage: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class VideoStatistics(BaseModel):
     """
     A class representing the video statistics info.
@@ -201,7 +196,6 @@ class VideoStatistics(BaseModel):
     commentCount: Optional[int] = field(default=None, repr=False)
 
 
-@dataclass
 class VideoStatus(BaseModel, DatetimeTimeMixin):
     """
     A class representing the video status info.
@@ -221,7 +215,6 @@ class VideoStatus(BaseModel, DatetimeTimeMixin):
     selfDeclaredMadeForKids: Optional[bool] = field(default=None, repr=False)
 
 
-@dataclass
 class VideoRecordingDetails(BaseModel, DatetimeTimeMixin):
     """
     A class representing the video recording details.
@@ -232,7 +225,6 @@ class VideoRecordingDetails(BaseModel, DatetimeTimeMixin):
     recordingDate: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class VideoLiveStreamingDetails(BaseModel, DatetimeTimeMixin):
     """
     A class representing the video live streaming details.
@@ -248,7 +240,6 @@ class VideoLiveStreamingDetails(BaseModel, DatetimeTimeMixin):
     activeLiveChatId: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class Video(BaseResource):
     """
     A class representing the video info.
@@ -268,7 +259,6 @@ class Video(BaseResource):
     )
 
 
-@dataclass
 class VideoListResponse(BaseApiResponse):
     """
     A class representing the video's retrieve response info.
@@ -279,7 +269,6 @@ class VideoListResponse(BaseApiResponse):
     items: Optional[List[Video]] = field(default=None, repr=False)
 
 
-@dataclass
 class VideoReportAbuse(BaseModel):
     """
     A class representing the video report abuse body.
@@ -292,7 +281,6 @@ class VideoReportAbuse(BaseModel):
     language: Optional[str] = field(default=None)
 
 
-@dataclass
 class VideoRatingItem(BaseModel):
     """
     A class representing the video rating item info.
@@ -302,7 +290,6 @@ class VideoRatingItem(BaseModel):
     rating: Optional[str] = field(default=None)
 
 
-@dataclass
 class VideoGetRatingResponse(BaseApiResponse):
     """
     A class representing the video rating response.

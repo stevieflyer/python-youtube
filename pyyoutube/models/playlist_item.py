@@ -1,16 +1,16 @@
 """
-    These are playlistItem related models.
+These are playlistItem related models.
 """
 
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from pydantic import Field as field
 
 from .base import BaseModel
 from .mixins import DatetimeTimeMixin
 from .common import BaseApiResponse, BaseResource, ResourceId, Thumbnails
 
 
-@dataclass
 class PlaylistItemContentDetails(BaseModel, DatetimeTimeMixin):
     """
     A class representing the playlist item's content details info.
@@ -25,7 +25,6 @@ class PlaylistItemContentDetails(BaseModel, DatetimeTimeMixin):
     endAt: Optional[str] = field(default=None, repr=False)
 
 
-@dataclass
 class PlaylistItemSnippet(BaseModel, DatetimeTimeMixin):
     """
     A class representing the playlist item's snippet info.
@@ -46,7 +45,6 @@ class PlaylistItemSnippet(BaseModel, DatetimeTimeMixin):
     resourceId: Optional[ResourceId] = field(default=None, repr=False)
 
 
-@dataclass
 class PlaylistItemStatus(BaseModel):
     """
     A class representing the playlist item's status info.
@@ -57,7 +55,6 @@ class PlaylistItemStatus(BaseModel):
     privacyStatus: Optional[str] = field(default=None)
 
 
-@dataclass
 class PlaylistItem(BaseResource):
     """
     A class representing the playlist item's info.
@@ -72,7 +69,6 @@ class PlaylistItem(BaseResource):
     status: Optional[PlaylistItemStatus] = field(default=None, repr=False)
 
 
-@dataclass
 class PlaylistItemListResponse(BaseApiResponse):
     """
     A class representing the playlist item's retrieve response info.
