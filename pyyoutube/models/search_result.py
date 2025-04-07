@@ -59,4 +59,4 @@ class SearchListResponse(BaseApiResponse):
     """
 
     regionCode: Optional[str] = field(default=None, repr=False)
-    items: Optional[List[SearchResult]] = field(default=None, repr=False)
+    items: Optional[List[SearchResult]] = field(default_factory=list, repr=False)

@@ -65,4 +65,4 @@ class CommentListResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/comments/list#response_1
     """
 
-    items: Optional[List[Comment]] = field(default=None, repr=False)
+    items: Optional[List[Comment]] = field(default_factory=list, repr=False)

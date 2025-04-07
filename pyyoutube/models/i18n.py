@@ -38,7 +38,7 @@ class I18nRegionListResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/i18nLanguages/list#response_1
     """
 
-    items: Optional[List[I18nRegion]] = field(default=None, repr=False)
+    items: Optional[List[I18nRegion]] = field(default_factory=list, repr=False)
 
 
 class I18nLanguageSnippet(BaseModel):
@@ -69,4 +69,4 @@ class I18nLanguageListResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/i18nLanguages/list#response_1
     """
 
-    items: Optional[List[I18nLanguage]] = field(default=None, repr=False)
+    items: Optional[List[I18nLanguage]] = field(default_factory=list, repr=False)

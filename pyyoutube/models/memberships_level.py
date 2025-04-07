@@ -44,4 +44,4 @@ class MembershipsLevelListResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/membershipsLevels/list#response
     """
 
-    items: Optional[List[MembershipsLevel]] = field(default=None, repr=False)
+    items: Optional[List[MembershipsLevel]] = field(default_factory=list, repr=False)

@@ -109,8 +109,8 @@ class ChannelTopicDetails(BaseTopicDetails):
     # Important:
     # topicIds maybe has deprecated.
     # see more: https://developers.google.com/youtube/v3/revision_history#november-10-2016
-    topicIds: Optional[List[str]] = field(default=None, repr=False)
-    topicCategories: Optional[List[str]] = field(default=None)
+    topicIds: Optional[List[str]] = field(default_factory=list, repr=False)
+    topicCategories: Optional[List[str]] = field(default_factory=list)
 
 
 class ChannelStatus(BaseModel):
@@ -187,4 +187,4 @@ class ChannelListResponse(BaseApiResponse):
     References: https://developers.google.com/youtube/v3/docs/channels/list#response
     """
 
-    items: Optional[List[Channel]] = field(default=None, repr=False)
+    items: Optional[List[Channel]] = field(default_factory=list, repr=False)

@@ -28,8 +28,8 @@ class RegionRestriction(BaseModel):
     Refer: https://developers.google.com/youtube/v3/docs/videos#contentDetails.regionRestriction
     """
 
-    allowed: Optional[List[str]] = field(default=None)
-    blocked: Optional[List[str]] = field(default=None, repr=False)
+    allowed: Optional[List[str]] = field(default_factory=None)
+    blocked: Optional[List[str]] = field(default_factory=None, repr=False)
 
 
 # TODO get detail rating description
@@ -60,7 +60,7 @@ class ContentRating(BaseModel):
     cscfRating: Optional[str] = field(default=None, repr=False)
     czfilmRating: Optional[str] = field(default=None, repr=False)
     djctqRating: Optional[str] = field(default=None, repr=False)
-    djctqRatingReasons: List[str] = field(default=None, repr=False)
+    djctqRatingReasons: List[str] = field(default_factory=list, repr=False)
     ecbmctRating: Optional[str] = field(default=None, repr=False)
     eefilmRating: Optional[str] = field(default=None, repr=False)
     egfilmRating: Optional[str] = field(default=None, repr=False)
@@ -68,7 +68,7 @@ class ContentRating(BaseModel):
     fcbmRating: Optional[str] = field(default=None, repr=False)
     fcoRating: Optional[str] = field(default=None, repr=False)
     fpbRating: Optional[str] = field(default=None, repr=False)
-    fpbRatingReasons: List[str] = field(default=None, repr=False)
+    fpbRatingReasons: List[str] = field(default_factory=list, repr=False)
     fskRating: Optional[str] = field(default=None, repr=False)
     grfilmRating: Optional[str] = field(default=None, repr=False)
     icaaRating: Optional[str] = field(default=None, repr=False)
@@ -148,9 +148,9 @@ class VideoTopicDetails(BaseTopicDetails):
     # Important:
     # This property has been deprecated as of November 10, 2016.
     # Any topics associated with a video are now returned by the topicDetails.relevantTopicIds[] property value.
-    topicIds: Optional[List[str]] = field(default=None, repr=False)
-    relevantTopicIds: Optional[List[str]] = field(default=None, repr=False)
-    topicCategories: Optional[List[str]] = field(default=None)
+    topicIds: Optional[List[str]] = field(default_factory=list, repr=False)
+    relevantTopicIds: Optional[List[str]] = field(default_factory=list, repr=False)
+    topicCategories: Optional[List[str]] = field(default_factory=list)
 
     def __post_init__(self):
         """
@@ -175,7 +175,7 @@ class VideoSnippet(BaseModel, DatetimeTimeMixin):
     description: Optional[str] = field(default=None)
     thumbnails: Optional[Thumbnails] = field(default=None, repr=False)
     channelTitle: Optional[str] = field(default=None, repr=False)
-    tags: Optional[List[str]] = field(default=None, repr=False)
+    tags: Optional[List[str]] = field(default_factory=list, repr=False)
     categoryId: Optional[str] = field(default=None, repr=False)
     liveBroadcastContent: Optional[str] = field(default=None, repr=False)
     defaultLanguage: Optional[str] = field(default=None, repr=False)
@@ -266,7 +266,7 @@ class VideoListResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/videos/list#response_1
     """
 
-    items: Optional[List[Video]] = field(default=None, repr=False)
+    items: Optional[List[Video]] = field(default_factory=list, repr=False)
 
 
 class VideoReportAbuse(BaseModel):
@@ -297,4 +297,4 @@ class VideoGetRatingResponse(BaseApiResponse):
     References: https://developers.google.com/youtube/v3/docs/videos/getRating#properties
     """
 
-    items: Optional[List[VideoRatingItem]] = field(default=None, repr=False)
+    items: Optional[List[VideoRatingItem]] = field(default_factory=list, repr=False)

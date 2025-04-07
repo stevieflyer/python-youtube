@@ -50,4 +50,4 @@ class CaptionListResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/captions/list?#response_1
     """
 
-    items: Optional[List[Caption]] = field(default=None, repr=False)
+    items: Optional[List[Caption]] = field(default_factory=list, repr=False)

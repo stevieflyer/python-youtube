@@ -44,7 +44,7 @@ class MemberSnippetMembershipsDetails(BaseModel):
 
     highestAccessibleLevel: Optional[str] = field(default=None)
     highestAccessibleLevelDisplayName: Optional[str] = field(default=None)
-    accessibleLevels: Optional[List[str]] = field(default=None, repr=False)
+    accessibleLevels: Optional[List[str]] = field(default_factory=list, repr=False)
     membershipsDuration: Optional[MemberSnippetMembershipsDuration] = field(
         default=None, repr=False
     )
@@ -88,4 +88,4 @@ class MemberListResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/members/list#response
     """
 
-    items: Optional[List[Member]] = field(default=None, repr=False)
+    items: Optional[List[Member]] = field(default_factory=list, repr=False)

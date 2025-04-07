@@ -76,4 +76,4 @@ class PlaylistItemListResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/playlistItems/list#response_1
     """
 
-    items: Optional[List[PlaylistItem]] = field(default=None, repr=False)
+    items: Optional[List[PlaylistItem]] = field(default_factory=None, repr=False)

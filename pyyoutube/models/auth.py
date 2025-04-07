@@ -13,7 +13,7 @@ class AccessToken(BaseModel):
     access_token: Optional[str] = field(default=None)
     expires_in: Optional[int] = field(default=None)
     refresh_token: Optional[str] = field(default=None, repr=False)
-    scope: Optional[List[str]] = field(default=None, repr=False)
+    scope: Optional[List[str]] = field(default_factory=list, repr=False)
     token_type: Optional[str] = field(default=None)
     expires_at: Optional[float] = field(default=None, repr=False)
 

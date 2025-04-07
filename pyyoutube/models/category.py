@@ -47,4 +47,4 @@ class VideoCategoryListResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/videoCategories/list#response_1
     """
 
-    items: Optional[List[VideoCategory]] = field(default=None, repr=False)
+    items: Optional[List[VideoCategory]] = field(default_factory=list, repr=False)

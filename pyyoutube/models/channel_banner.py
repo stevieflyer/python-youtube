@@ -4,7 +4,7 @@ There are channel banner related models
 References: https://developers.google.com/youtube/v3/docs/channelBanners#properties
 """
 
-from typing import List, Optional
+from typing import Optional
 
 from pydantic import Field as field
 

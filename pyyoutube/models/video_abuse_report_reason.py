@@ -29,7 +29,9 @@ class VideoAbuseReportReasonSnippet(BaseModel):
     """
 
     label: Optional[str] = field(default=None)
-    secondaryReasons: Optional[List[SecondaryReason]] = field(default=None, repr=True)
+    secondaryReasons: Optional[List[SecondaryReason]] = field(
+        default_factory=list, repr=True
+    )
 
 
 class VideoAbuseReportReason(BaseResource):
@@ -49,4 +51,6 @@ class VideoAbuseReportReasonListResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/videoAbuseReportReasons/list#response_1
     """
 
-    items: Optional[List[VideoAbuseReportReason]] = field(default=None, repr=False)
+    items: Optional[List[VideoAbuseReportReason]] = field(
+        default_factory=list, repr=False
+    )

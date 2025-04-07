@@ -180,4 +180,4 @@ class ActivityListResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/activities/list#response_1
     """
 
-    items: Optional[List[Activity]] = field(default=None, repr=False)
+    items: Optional[List[Activity]] = field(default_factory=list, repr=False)

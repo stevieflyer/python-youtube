@@ -55,7 +55,7 @@ class BaseTopicDetails(BaseModel):
     This is the base model for channel or video topic details.
     """
 
-    topicIds: List[str] = field(default=None, repr=False)
+    topicIds: List[str] = field(default_factory=list, repr=False)
 
     def get_full_topics(self):
         """

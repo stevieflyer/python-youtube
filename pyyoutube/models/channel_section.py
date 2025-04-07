@@ -30,8 +30,8 @@ class ChannelSectionContentDetails(BaseModel):
     Refer: https://developers.google.com/youtube/v3/docs/channelSections#contentDetails
     """
 
-    playlists: Optional[List[str]] = field(default=None, repr=False)
-    channels: Optional[List[str]] = field(default=None)
+    playlists: Optional[List[str]] = field(default_factory=list, repr=False)
+    channels: Optional[List[str]] = field(default_factory=list)
 
 
 class ChannelSection(BaseResource):
@@ -54,7 +54,7 @@ class ChannelSectionResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/channelSections/list?#properties_1
     """
 
-    items: Optional[List[ChannelSection]] = field(default=None, repr=False)
+    items: Optional[List[ChannelSection]] = field(default_factory=list, repr=False)
 
 
 class ChannelSectionListResponse(ChannelSectionResponse): ...

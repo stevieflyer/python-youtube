@@ -75,4 +75,4 @@ class SubscriptionListResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/subscriptions/list#response_1
     """
 
-    items: Optional[List[Subscription]] = field(default=None, repr=False)
+    items: Optional[List[Subscription]] = field(default_factory=list, repr=False)

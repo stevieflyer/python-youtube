@@ -32,7 +32,7 @@ class CommentThreadReplies(BaseModel):
     Refer: https://developers.google.com/youtube/v3/docs/commentThreads#replies
     """
 
-    comments: Optional[List[Comment]] = field(default=None, repr=False)
+    comments: Optional[List[Comment]] = field(default_factory=list, repr=False)
 
 
 class CommentThread(BaseResource):
@@ -53,4 +53,4 @@ class CommentThreadListResponse(BaseApiResponse):
     Refer: https://developers.google.com/youtube/v3/docs/commentThreads/list#response_1
     """
 
-    items: Optional[List[CommentThread]] = field(default=None, repr=False)
+    items: Optional[List[CommentThread]] = field(default_factory=list, repr=False)
