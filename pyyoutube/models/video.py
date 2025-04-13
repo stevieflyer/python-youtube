@@ -28,8 +28,8 @@ class RegionRestriction(BaseModel):
     Refer: https://developers.google.com/youtube/v3/docs/videos#contentDetails.regionRestriction
     """
 
-    allowed: Optional[List[str]] = field(default_factory=None)
-    blocked: Optional[List[str]] = field(default_factory=None, repr=False)
+    allowed: Optional[List[str]] = field(default=None)
+    blocked: Optional[List[str]] = field(default=None, repr=False)
 
 
 # TODO get detail rating description
